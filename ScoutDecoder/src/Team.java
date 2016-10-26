@@ -7,4 +7,12 @@ public class Team
 	{
 		mData.add(match);
 	}
+	public int size()
+	{
+		return mData.size();
+	}
+	public Match getMatch(int index)
+	{
+		return mData.get(index);
+	}
 }

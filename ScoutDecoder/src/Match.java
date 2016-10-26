@@ -26,6 +26,8 @@ public class Match
 	int Rock;
 	int Rough;
 	int LowBar;
+	String comment;
+	String scouter;
 	ArrayList<String> data = new ArrayList<String>();
 
 	public void setData(ArrayList<String> myData)
@@ -54,6 +56,8 @@ public class Match
 		lowGoals = Integer.parseInt(myData.get(21));
 		scale = myData.get(22).equals("true");
 		surround = myData.get(23).equals("true");
+		comment = myData.get(24);
+		scouter = myData.get(25);
 	}
 
 	public int getAutoHighGoals()
@@ -174,6 +178,14 @@ public class Match
 	public boolean getSurround()
 	{
 		return surround;
+	}
+	public String getComment()
+	{
+		return comment;
+	}
+	public String getScouter()
+	{
+		return scouter;
 	}
 }
 
