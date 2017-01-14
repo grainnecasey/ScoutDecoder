@@ -44,7 +44,6 @@ public class Main
 		} catch (Exception e) {}
 		return Data;
 	}
-
 	private static ArrayList<String> decode(String in)
 	{
 		String[] decode = in.split("•");
@@ -55,7 +54,6 @@ public class Main
 		}
 		return decoded;
 	}
-
 	private static void outData()
 	{
 		PrintWriter writer;
@@ -118,8 +116,7 @@ public class Main
 						writer.println("\t\tSurround: " + curr.getSurround());
 						writer.println("\t\tComment: " + curr.getComment());
 						writer.println("\t\tScouter: " + curr.getScouter());
-						double SP = ((curr.getHighGoals() + 0.4 * curr.getLowGoals())
-								/ (curr.getHighGoals() + curr.getLowGoals() + curr.getMisses()));
+						double SP = ((curr.getHighGoals() + 0.4 * curr.getLowGoals()) / (curr.getHighGoals() + curr.getLowGoals() + curr.getMisses()));
 						writer.println("\t\tShot %: " + SP * 100 + "%");
 					}
 					for (int j = 0; j < Data.get(i).PitSize(); j++)
@@ -163,9 +160,7 @@ public class Main
 		{
 			System.out.println("Error writting to file");
 		}
-
 	}
-
 	public static void main(String[] args)
 	{
 		rawData = "";
