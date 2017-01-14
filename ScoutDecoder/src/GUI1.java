@@ -1,3 +1,18 @@
+/* --------------------------------------------------------------------------
+ * Scouting Decoder
+ * --------------------------------------------------------------------------
+ * Changelog: 
+ * 1/14/2017 - Conversion to 2017 game, pit find data, and bug fixing
+ * --------------------------------------------------------------------------
+ * Bugs:
+ * 1/14/2017 - Nothing
+ * --------------------------------------------------------------------------
+ * Planned Features:
+ * • Make it look nicer
+ * --------------------------------------------------------------------------
+ * Notes:
+ * 1/14/2017 - Started commenting
+ */
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,7 +33,8 @@ public class GUI1
 {
 	private static String rawData = "";
 	private static ArrayList<Team> Data = new ArrayList<Team>();
-
+	
+	// Grabs saved data
 	private static void getData()
 	{
 			ArrayList<String> decoded = new ArrayList<String>();
@@ -74,6 +90,7 @@ public class GUI1
 			outData();
 		}
 
+	// Decodes the input
 	private static ArrayList<String> decode(String in)
 	{
 		String[] decode = in.split("}");
@@ -85,6 +102,7 @@ public class GUI1
 		return decoded;
 	}
 
+	// Saves the data
 	private static void outData()
 	{
 		PrintWriter writer;
@@ -202,6 +220,8 @@ public class GUI1
 		frmMain.setBounds(100, 100, 1146, 850);
 		frmMain.setDefaultCloseOperation(close());
 		frmMain.getContentPane().setLayout(null);
+		
+		// Enters values and saves to a file
 		JButton btnSave = new JButton("Enter/Save");
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -258,54 +278,57 @@ public class GUI1
 			//txtOut.setText(txtOut.getText() + rawData);
 			}
 		});
-	btnSave.setBounds(496, 75, 123, 49);
-	frmMain.getContentPane().add(btnSave);
-	JButton btnExit = new JButton("Exit");
-	btnExit.addActionListener(new ActionListener() {
+		btnSave.setBounds(496, 75, 123, 49);
+		frmMain.getContentPane().add(btnSave);
+		
+		// Exit button that also saves
+		JButton btnExit = new JButton("Exit");
+		btnExit.addActionListener(new ActionListener() {
 	public void actionPerformed(ActionEvent e)
 	{
 		outData();
 		frmMain.dispose();
 	}});
-	btnExit.setBounds(12,777,97,25);
-	frmMain.getContentPane().add(btnExit);
+		btnExit.setBounds(12,777,97,25);
+		frmMain.getContentPane().add(btnExit);
+		
+		txtInput = new JTextField();
+		txtInput.setToolTipText("Input");
+		txtInput.setBounds(12,13,1104,49);
+		frmMain.getContentPane().add(txtInput);
+		txtInput.setColumns(10);
 
-	txtInput = new JTextField();
-	txtInput.setToolTipText("Input");
-	txtInput.setBounds(12,13,1104,49);
-	frmMain.getContentPane().add(txtInput);
-	txtInput.setColumns(10);
+		txtOut = new JTextArea();
+		txtOut.setEditable(false);
+		txtOut.setBounds(24,137,1104,539);
+		frmMain.getContentPane().add(txtOut);
 
-	txtOut = new JTextArea();
-	txtOut.setEditable(false);
-	txtOut.setBounds(24,137,1104,539);
-	frmMain.getContentPane().add(txtOut);
+		txtTeam = new JTextField();
+		txtTeam.setToolTipText("Insert Team # In Here");
+		txtTeam.setBounds(856,704,116,22);
+		frmMain.getContentPane().add(txtTeam);
+		txtTeam.setColumns(10);
 
-	txtTeam = new JTextField();
-	txtTeam.setToolTipText("Insert Team # In Here");
-	txtTeam.setBounds(856,704,116,22);
-	frmMain.getContentPane().add(txtTeam);
-	txtTeam.setColumns(10);
+		txtMatch = new JTextField();
+		txtMatch.setToolTipText("Insert Match");
+		txtMatch.setBounds(856,739,116,22);
+		frmMain.getContentPane().add(txtMatch);
+		txtMatch.setColumns(10);
 
-	txtMatch = new JTextField();
-	txtMatch.setToolTipText("Insert Match");
-	txtMatch.setBounds(856,739,116,22);
-	frmMain.getContentPane().add(txtMatch);
-	txtMatch.setColumns(10);
+		txtData = new JTextField();
+		txtData.setToolTipText("Insert which data you want (add \"avg\" or type \"all\" for all data)");
+		txtData.setBounds(856,778,116,22);
+		frmMain.getContentPane().add(txtData);
+		txtData.setColumns(10);
 
-	txtData = new JTextField();
-	txtData.setToolTipText("Insert which data you want (add \"avg\" or type \"all\" for all data)");
-	txtData.setBounds(856,778,116,22);
-	frmMain.getContentPane().add(txtData);
-	txtData.setColumns(10);
-
-	JRadioButton btnPit = new JRadioButton("Pit Data");
-	btnPit.setHorizontalAlignment(SwingConstants.TRAILING);
-	btnPit.setBounds(694, 738, 127, 25);
-	frmMain.getContentPane().add(btnPit);
+		JRadioButton btnPit = new JRadioButton("Pit Data");
+		btnPit.setHorizontalAlignment(SwingConstants.TRAILING);
+		btnPit.setBounds(694, 738, 127, 25);
+		frmMain.getContentPane().add(btnPit);
 	
-	btnFind = new JButton("Find");
-	btnFind.addActionListener(new ActionListener() {
+		// Outputs data to UI
+		btnFind = new JButton("Find");
+		btnFind.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			try {
 				if (btnPit.isSelected())
@@ -416,11 +439,12 @@ public class GUI1
 				}
 			} catch (Exception error) {txtOut.setText("invalid input");}
 	}});
-	btnFind.setBounds(1019,738,97,25);
-	frmMain.getContentPane().add(btnFind);
+		btnFind.setBounds(1019,738,97,25);
+		frmMain.getContentPane().add(btnFind);
 	
-	JButton btnFindFile = new JButton("Find File");
-	btnFindFile.addActionListener(new ActionListener() {
+		// Finds the file
+		JButton btnFindFile = new JButton("Find File");
+		btnFindFile.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e){
 			JFileChooser fc = new JFileChooser();
 			if (fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
@@ -487,8 +511,8 @@ public class GUI1
 				
 			}
 		}
-	});
-	btnFindFile.setBounds(424, 738, 97, 25);
-	frmMain.getContentPane().add(btnFindFile);
-}	
+		});
+		btnFindFile.setBounds(424, 738, 97, 25);
+		frmMain.getContentPane().add(btnFindFile);
+	}	
 }
