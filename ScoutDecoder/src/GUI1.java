@@ -11,6 +11,8 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.JRadioButton;
+import javax.swing.SwingConstants;
 
 public class GUI1
 {
@@ -19,35 +21,6 @@ public class GUI1
 
 	private static void getData()
 	{
-		/*
-		ArrayList<String> decoded = new ArrayList<String>();
-		try
-		{
-			
-			rawData += fScan.nextLine();
-			txtOut.setText(rawData);
-			String[] d = rawData.split("]");
-			for (int i = 1; i < d.length; i++)
-			{
-				Match nMatch = new Match();
-				decoded = decode(d[i]);
-				int index = Integer.parseInt(decoded.get(0));
-				nMatch.setData(decoded);
-				if (Data.size() == 0 || Data.get(index) == null)
-				{
-					Team nTeam = new Team();
-					nTeam.addMatch(nMatch);
-					Data.set(index, nTeam);
-				} else
-				{
-					Team tTeam = Data.get(index);
-					tTeam.addMatch(nMatch);
-					Data.set(index, tTeam);
-				}
-			}
-			fScan.close();
-			outData();
-		} catch (Exception e) {}*/
 			ArrayList<String> decoded = new ArrayList<String>();
 			int index;
 			Scanner fScan;
@@ -94,10 +67,10 @@ public class GUI1
 				}
 				
 			}
-			catch (FileNotFoundException e1)
-			{}
-			//catch (Exception error)
+			//catch (FileNotFoundException e1)
 			//{}
+			catch (Exception error)
+			{}
 			outData();
 		}
 
@@ -128,88 +101,49 @@ public class GUI1
 					{
 						Match curr = Data.get(i).getMatch(j);
 						writer.println("\tMatch: " + (j + 1));
-						writer.println("\t\tAuto High Goals: " + curr.getAutoHighGoals());
-						writer.println("\t\tAuto Low Goals: " + curr.getAutoLowGoals());
-						if (curr.getAutoPort() != -1)
-							writer.println("\t\tAuto Port: " + curr.getAutoPort());
-						if (curr.getAutoCDF() != -1)
-							writer.println("\t\tAuto CDF: " + curr.getAutoCDF());
-						if (curr.getAutoRamp() != -1)
-							writer.println("\t\tAuto Ramp: " + curr.getAutoRamp());
-						if (curr.getAutoMoat() != -1)
-							writer.println("\t\tAuto Moat: " + curr.getAutoMoat());
-						if (curr.getAutoDraw() != -1)
-							writer.println("\t\tAuto Draw: " + curr.getAutoDraw());
-						if (curr.getAutoSally() != -1)
-							writer.println("\t\tAuto Sally: " + curr.getAutoSally());
-						if (curr.getAutoRock() != -1)
-							writer.println("\t\tAuto Rock: " + curr.getAutoRock());
-						if (curr.getAutoRough() != -1)
-							writer.println("\t\tAuto Rough: " + curr.getAutoRough());
-						if (curr.getAutoLowBar() != -1)
-							writer.println("\t\tAuto Low Bar: " + curr.getAutoLowBar());
-						writer.println("\t\tHigh Goals: " + curr.getHighGoals());
-						writer.println("\t\tLow Goals: " + curr.getLowGoals());
-						if (curr.getPort() != -1)
-							writer.println("\t\tPort: " + curr.getPort());
-						if (curr.getCDF() != -1)
-							writer.println("\t\tCDF: " + curr.getCDF());
-						if (curr.getRamp() != -1)
-							writer.println("\t\tRamp: " + curr.getRamp());
-						if (curr.getMoat() != -1)
-							writer.println("\t\tMoat: " + curr.getMoat());
-						if (curr.getDraw() != -1)
-							writer.println("\t\tDraw: " + curr.getDraw());
-						if (curr.getSally() != -1)
-							writer.println("\t\tSally: " + curr.getSally());
-						if (curr.getRock() != -1)
-							writer.println("\t\tRock: " + curr.getRock());
-						if (curr.getRough() != -1)
-							writer.println("\t\tRough: " + curr.getRough());
-						if (curr.getLowBar() != -1)
-							writer.println("\t\tLow Bar: " + curr.getLowBar());
-						writer.println("\t\tHigh Goals: " + curr.getHighGoals());
-						writer.println("\t\tLow Goals: " + curr.getLowGoals());
-						writer.println("\t\tScale: " + curr.getScaled());
-						writer.println("\t\tSurround: " + curr.getSurround());
-						writer.println("\t\tComment: " + curr.getComment());
+						writer.println("\t\tAuto Gear: " + curr.getAutoGear());
+						writer.println("\t\tAuto Gear Position: " + curr.getAutoGearPos());
+						writer.println("\t\tAuto Baseline: " + curr.getAutoBase());
+						writer.println("\t\tAuto Low Goal: " + curr.getAutoLow());
+						writer.println("\t\tAuto High Goal: " + curr.getAutoHigh());
+						writer.println("\t\tAuto Hopper: " + curr.getAutoHopper());
+						writer.println("\t\tLow Goal: " + curr.getLow());
+						writer.println("\t\tHigh Goal: " + curr.getHigh());
+						writer.println("\t\tGear: " + curr.getGear());
+						writer.println("\t\tCycle Time: " + curr.getCycleTime());
+						writer.println("\t\tClear Time: " + curr.getClearTime());
+						writer.println("\t\tClimb: " + curr.getClimb());
+						writer.println("\t\tSurvival: " + curr.getSurvived());
+						writer.println("\t\tQuality: " + curr.getQuality());
+						writer.println("\t\tStrategic: " + curr.getStrategy());
+						writer.println("\t\tDrivers: " + curr.getDriver());
+						writer.println("\t\tComments: " + curr.getComment());
 						writer.println("\t\tScouter: " + curr.getScouter());
-						double SP = ((curr.getHighGoals() + 0.4 * curr.getLowGoals())
-								/ (curr.getHighGoals() + curr.getLowGoals() + curr.getMisses()));
-						writer.println("\t\tShot %: " + SP * 100 + "%");
+						
 					}
 					for (int j = 0; j < Data.get(i).PitSize(); j++)
 					{
 						Pit curr = Data.get(i).getPit(j);
 						writer.println("\tPit: " + (j + 1));
-						writer.println("\t\tAuto High Goals: " + curr.getAutoHighGoals());
-						writer.println("\t\tAuto Low Goals: " + curr.getAutoLowGoals());
-						writer.println("\t\tAuto Port: " + curr.getAutoPort());
-						writer.println("\t\tAuto CDF: " + curr.getAutoCDF());
-						writer.println("\t\tAuto Ramp: " + curr.getAutoRamp());
-						writer.println("\t\tAuto Moat: " + curr.getAutoMoat());
-						writer.println("\t\tAuto Draw: " + curr.getAutoDraw());
-						writer.println("\t\tAuto Sally: " + curr.getAutoSally());
-						writer.println("\t\tAuto Rock: " + curr.getAutoRock());
-						writer.println("\t\tAuto Rough: " + curr.getAutoRough());
-						writer.println("\t\tAuto Low Bar: " + curr.getAutoLowBar());
-						writer.println("\t\tHigh Goals: " + curr.getHighGoals());
-						writer.println("\t\tLow Goals: " + curr.getLowGoals());
-						writer.println("\t\tPort: " + curr.getPort());
-						writer.println("\t\tCDF: " + curr.getCDF());
-						writer.println("\t\tRamp: " + curr.getRamp());
-						writer.println("\t\tMoat: " + curr.getMoat());
-						writer.println("\t\tDraw: " + curr.getDraw());
-						writer.println("\t\tSally: " + curr.getSally());
-						writer.println("\t\tRock: " + curr.getRock());
-						writer.println("\t\tRough: " + curr.getRough());
-						writer.println("\t\tLow Bar: " + curr.getLowBar());
-						writer.println("\t\tHigh Goals: " + curr.getHighGoals());
-						writer.println("\t\tLow Goals: " + curr.getLowGoals());
-						writer.println("\t\tScale: " + curr.getScaled());
-						writer.println("\t\tSurround: " + curr.getSurround());
-						writer.println("\t\tComment: " + curr.getComment());
+						writer.println("\t\tAuto Gear: " + curr.getAutoGear());
+						writer.println("\t\tAuto Baseline: " + curr.getAutoHigh());
+						writer.println("\t\tAuto Low Goal: " + curr.getAutoLow());
+						writer.println("\t\tAuto Hopper: " + curr.getAutoHopper());
+						writer.println("\t\tGear: " + curr.getGear());
+						writer.println("\t\tLow Goal: " + curr.getLow());
+						writer.println("\t\tHigh Goal: " + curr.getHigh());
+						writer.println("\t\tRobot Speed: " + curr.getRoboSpeed());
+						writer.println("\t\tShoot Speed: " + curr.getShootSpeed());
+						writer.println("\t\tAccuracy: " + curr.getAcc());
+						writer.println("\t\tClimb: " + curr.getClimb());
+						writer.println("\t\tClimbSpeed: " + curr.getClimbSpeed());
+						writer.println("\t\tEnding Strategy: " + curr.getEndStrategy());
+						writer.println("\t\tStrategy: " + curr.getStrategy());
+						writer.println("\t\tIdeal Allies: " + curr.getIdealAlly());
+						writer.println("\t\tBall Capacity: " + curr.getCapacity());
+						writer.println("\t\tField Usage: " + curr.getFieldUsage());
 						writer.println("\t\tScouter: " + curr.getScouter());
+						writer.println("\t\tComments: " + curr.getComment());
 					}
 				}
 			}
@@ -365,156 +299,121 @@ public class GUI1
 	frmMain.getContentPane().add(txtData);
 	txtData.setColumns(10);
 
+	JRadioButton btnPit = new JRadioButton("Pit Data");
+	btnPit.setHorizontalAlignment(SwingConstants.TRAILING);
+	btnPit.setBounds(694, 738, 127, 25);
+	frmMain.getContentPane().add(btnPit);
+	
 	btnFind = new JButton("Find");
 	btnFind.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			try {
-				int teamI = Integer.parseInt(txtTeam.getText());
-				int matchI = Integer.parseInt(txtMatch.getText());
-				String dataI = txtData.getText();
-				Team team = Data.get(teamI);
-				Match curr = team.getMatch(matchI - 1);
-				switch(dataI)
+				if (btnPit.isSelected())
 				{
-					case "all":
-						double SP = ((curr.getHighGoals() + 0.4 * curr.getLowGoals()) / (curr.getHighGoals() + curr.getLowGoals() + curr.getMisses()));
-						txtOut.setText("Auto High Goals: " + curr.getAutoHighGoals() + "\nAuto Low Goals: " + curr.getAutoLowGoals());
-						if (curr.getAutoPort() != -1)
-							txtOut.setText(txtOut.getText() + "\nAuto Port: " + curr.getAutoPort());
-						if (curr.getAutoCDF() != -1)
-							txtOut.setText(txtOut.getText() + "\nAuto CDF: " + curr.getAutoCDF());
-						if (curr.getAutoRamp() != -1)
-							txtOut.setText(txtOut.getText() + "\nAuto Ramp: " + curr.getAutoRamp());
-						if (curr.getAutoMoat() != -1)
-							txtOut.setText(txtOut.getText() + "\nAuto Moat: " + curr.getAutoMoat());
-						if (curr.getAutoDraw() != -1)
-							txtOut.setText(txtOut.getText() + "\nAuto Draw: " + curr.getAutoDraw());
-						if (curr.getAutoSally() != -1)
-							txtOut.setText(txtOut.getText() + "\nAuto Sally: " + curr.getAutoSally());
-						if (curr.getAutoRock() != -1)
-							txtOut.setText(txtOut.getText() + "\nAuto Rock: " + curr.getAutoRock());
-						if (curr.getAutoRough() != -1)
-							txtOut.setText(txtOut.getText() + "\nAuto Rough: " + curr.getAutoRough());
-						if (curr.getAutoLowBar() != -1)
-							txtOut.setText(txtOut.getText() + "\nAuto Low Bar: " + curr.getAutoLowBar());
-						if (curr.getPort() != -1)
-							txtOut.setText(txtOut.getText() + "\nPort: " + curr.getPort());
-						if (curr.getCDF() != -1)
-							txtOut.setText(txtOut.getText() + "\nCDF: " + curr.getCDF());
-						if (curr.getRamp() != -1)
-							txtOut.setText(txtOut.getText() + "\nRamp: " + curr.getRamp());
-						if (curr.getMoat() != -1)
-							txtOut.setText(txtOut.getText() + "\nMoat: " + curr.getMoat());
-						if (curr.getDraw() != -1)
-							txtOut.setText(txtOut.getText() + "\nDraw: " + curr.getDraw());
-						if (curr.getSally() != -1)
-							txtOut.setText(txtOut.getText() + "\nSally: " + curr.getSally());
-						if (curr.getRock() != -1)
-							txtOut.setText(txtOut.getText() + "\nRock: " + curr.getRock());
-						if (curr.getRough() != -1)
-							txtOut.setText(txtOut.getText() + "\nRough: " + curr.getRough());
-						if (curr.getLowBar() != -1)
-							txtOut.setText(txtOut.getText() + "\nLow Bar: " + curr.getLowBar());
-						txtOut.setText(txtOut.getText() + "\nHigh Goals: " + curr.getHighGoals() + "\nLow Goals: " + curr.getLowGoals() + 
-								"\nScale: " + curr.getScaled() + "\nSurround: " + curr.getSurround() + "\nComment: " + curr.getComment() +
-								"\nScouter: " + curr.getScouter() + "\nShot %: " + SP * 100 + "%");	
-						break;
-					case "auto high goal":
-						txtOut.setText("Auto High Goals: " + curr.getAutoHighGoals());
-						break;
-					case "auto low goal":
-						txtOut.setText("Auto Low Goals: " + curr.getAutoLowGoals());
-						break;
-					case "auto port":
-						if (curr.getAutoPort() != -1)
-							txtOut.setText("Auto Port: " + curr.getAutoPort());
-						break;
-					case "auto cdf":
-						if (curr.getAutoCDF() != -1)
-							txtOut.setText("Auto CDF: " + curr.getAutoCDF());
-						break;
-					case "auto ramp":
-						if (curr.getAutoRamp() != -1)
-							txtOut.setText("Auto Ramp: " + curr.getAutoRamp());
-						break;
-					case "auto moat":
-						if (curr.getAutoMoat() != -1)
-							txtOut.setText("Auto Moat: " + curr.getAutoMoat());
-						break;
-					case "auto draw":
-						if (curr.getAutoDraw() != -1)
-							txtOut.setText("Auto Draw: " + curr.getAutoDraw());
-						break;
-					case "auto sally":
-						if (curr.getAutoSally() != -1)
-							txtOut.setText("Auto Sally: " + curr.getAutoSally());
-						break;
-					case "auto rock":
-						if (curr.getAutoRock() != -1)
-							txtOut.setText("Auto Rock: " + curr.getAutoRock());
-						break;
-					case "auto rough":
-						if (curr.getAutoRough() != -1)
-							txtOut.setText("Auto Rough: " + curr.getAutoRough());
-						break;
-					case "auto lowbar":
-						if (curr.getAutoLowBar() != -1)
-							txtOut.setText("Auto Low Bar: " + curr.getAutoLowBar());
-						break;
-					case "port":
-						if (curr.getPort() != -1)
-							txtOut.setText("Port: " + curr.getPort());
-						break;
-					case "cdf":
-						if (curr.getCDF() != -1)
-							txtOut.setText("CDF: " + curr.getCDF());
-						break;
-					case "ramp":
-						if (curr.getRamp() != -1)
-							txtOut.setText("Ramp: " + curr.getRamp());
-						break;
-					case "moat":
-						if (curr.getMoat() != -1)
-							txtOut.setText("Moat: " + curr.getMoat());
-						break;
-					case "draw":
-						if (curr.getDraw() != -1)
-							txtOut.setText("Draw: " + curr.getDraw());
-						break;
-					case "sally":
-						if (curr.getSally() != -1)
-							txtOut.setText("Sally: " + curr.getSally());
-						break;
-					case "rock":
-						if (curr.getRock() != -1)
-							txtOut.setText("Rock: " + curr.getRock());
-						break;
-					case "rough":
-						if (curr.getRough() != -1)
-							txtOut.setText("Rough: " + curr.getRough());
-						break;
-					case "lowbar":
-						if (curr.getLowBar() != -1)
-							txtOut.setText("Low Bar: " + curr.getLowBar());
-						break;
-					case "high goals":
-						txtOut.setText("High Goals: " + curr.getHighGoals());
-						break;
-					case "low goals":
-						txtOut.setText("Low Goals: " + curr.getLowGoals());
-						break;
-					case "scale":
-						txtOut.setText("Scale: " + curr.getScaled());
-						break;
-					case "surround":
-						txtOut.setText("Surround: " + curr.getSurround());
-						break;
-					case "sp":
-						SP = ((curr.getHighGoals() + 0.4 * curr.getLowGoals()) / (curr.getHighGoals() + curr.getLowGoals() + curr.getMisses()));
-						txtOut.setText("Shot Percentage: " + SP + "%");
-						break;
+					int teamI = Integer.parseInt(txtTeam.getText());
+					int pitI = Integer.parseInt(txtMatch.getText());
+					Team team = Data.get(teamI);
+					Pit curr = team.getPit(pitI - 1);
+					txtOut.setText(txtOut.getText() + "\nAuto Gear: " + curr.getAutoGear());
+					txtOut.setText(txtOut.getText() + "\nAuto High Goal: " + curr.getAutoHigh());
+					txtOut.setText(txtOut.getText() + "\nAuto Low Goal: " + curr.getAutoLow());
+					txtOut.setText(txtOut.getText() + "\nAuto Hopper: " + curr.getAutoHopper());
+					txtOut.setText(txtOut.getText() + "\nGear: " + curr.getGear());
+					txtOut.setText(txtOut.getText() + "\nLow Goal: " + curr.getLow());
+					txtOut.setText(txtOut.getText() + "\nHigh Goal: " + curr.getHigh());
+					txtOut.setText(txtOut.getText() + "\nRobot Speed: " + curr.getRoboSpeed());
+					txtOut.setText(txtOut.getText() + "\nShoot Speed: " + curr.getShootSpeed());
+					txtOut.setText(txtOut.getText() + "\nAccuracy: " + curr.getAcc());
+					txtOut.setText(txtOut.getText() + "\nClimb: " + curr.getClimb());
+					txtOut.setText(txtOut.getText() + "\nClimbing Speed: " + curr.getClimbSpeed());
+					txtOut.setText(txtOut.getText() + "\nEnding Strategy: " + curr.getEndStrategy());
+					txtOut.setText(txtOut.getText() + "\nStrategy: " + curr.getStrategy());
+					txtOut.setText(txtOut.getText() + "\nIdeal Allies: " + curr.getIdealAlly());
+					txtOut.setText(txtOut.getText() + "\nBall Capacity: " + curr.getCapacity());
+					txtOut.setText(txtOut.getText() + "\nField Usage: " + curr.getFieldUsage());
+					txtOut.setText(txtOut.getText() + "\nScouter: " + curr.getScouter());
+					txtOut.setText(txtOut.getText() + "\nComments: " + curr.getComment());
+				} else {
+					int teamI = Integer.parseInt(txtTeam.getText());
+					int matchI = Integer.parseInt(txtMatch.getText());
+					String dataI = txtData.getText();
+					Team team = Data.get(teamI);
+					Match curr = team.getMatch(matchI - 1);
+					switch(dataI)
+					{
+						case "":
+						case "all":
+							txtOut.setText(txtOut.getText() + "\nAuto Gear: " + curr.getAutoGear());
+							txtOut.setText(txtOut.getText() + "\nAuto Gear Position" + curr.getAutoGearPos());
+							txtOut.setText(txtOut.getText() + "\nAuto Base: " + curr.getAutoBase());
+							txtOut.setText(txtOut.getText() + "\nAuto Low Goal: " + curr.getAutoLow());
+							txtOut.setText(txtOut.getText() + "\nAuto High Goal: " + curr.getAutoHigh());
+							txtOut.setText(txtOut.getText() + "\nAuto Hopper: " + curr.getAutoHopper());
+							txtOut.setText(txtOut.getText() + "\nLow Goal: " + curr.getLow());
+							txtOut.setText(txtOut.getText() + "\nHigh Goal: " + curr.getHigh());
+							txtOut.setText(txtOut.getText() + "\nGear: " + curr.getGear());
+							txtOut.setText(txtOut.getText() + "\nCycle Time: " + curr.getCycleTime());
+							txtOut.setText(txtOut.getText() + "\nClear Time: " + curr.getClearTime());
+							txtOut.setText(txtOut.getText() + "\nClimb: " + curr.getClimb());
+							txtOut.setText(txtOut.getText() + "\nSurvived: " + curr.getSurvived());
+							txtOut.setText(txtOut.getText() + "\nQuality: " + curr.getQuality());
+							txtOut.setText(txtOut.getText() + "\nStrategic: " + curr.getStrategy());
+							txtOut.setText(txtOut.getText() + "\nDriver: " + curr.getDriver());
+							txtOut.setText(txtOut.getText() + "\nComments: " + curr.getComment());
+							txtOut.setText(txtOut.getText() + "\nScouter: " + curr.getScouter());						
+							break;
+						case "auto gear":
+							txtOut.setText("Auto Gear: " + curr.getAutoGear());
+							break;
+						case "auto gearpos":
+							txtOut.setText("Auto Gear Position: " + curr.getAutoGearPos());
+						case "auto base":
+							txtOut.setText("Auto Base: " + curr.getAutoBase());
+							break;
+						case "auto low goal":
+							txtOut.setText("Auto Low Goal: " + curr.getAutoLow());
+							break;
+						case "auto high goal":
+							txtOut.setText("Auto High Goal: " + curr.getAutoHigh());
+							break;
+						case "auto hopper":
+							txtOut.setText("Auto Hopper: " + curr.getAutoHopper());
+							break;
+						case "low goal":
+							txtOut.setText("Low Goal: " + curr.getLow());
+							break;
+						case "high goal":
+							txtOut.setText("High Goal: " + curr.getHigh());
+							break;
+						case "gear":
+							txtOut.setText("Gear: " + curr.getGear());
+							break;
+						case "clear":
+							txtOut.setText("Clear Time: " + curr.getClearTime());
+							break;
+						case "climb":
+							txtOut.setText("Cycle Time: " + curr.getCycleTime());
+							break;
+						case "survived":
+							txtOut.setText("Survived: " + curr.getSurvived());
+							break;
+						case "quality":
+							txtOut.setText("Quality: " + curr.getQuality());
+							break;
+						case "strategy":
+							txtOut.setText("Strategy: " + curr.getStrategy());
+							break;
+						case "driver":
+							txtOut.setText("Driver: " + curr.getDriver());
+							break;
+						case "comment":
+							txtOut.setText("Comment: " + curr.getComment());
+							break;
+						case "scouter":
+							txtOut.setText("Scouter: " + curr.getScouter());
+							break;
+					}
 				}
-
 			} catch (Exception error) {txtOut.setText("invalid input");}
 	}});
 	btnFind.setBounds(1019,738,97,25);
@@ -578,6 +477,7 @@ public class GUI1
 						}
 						catch (Exception error)
 						{ 
+							txtOut.setText("Invalid Input");
 						}
 					txtInput.setText("");
 					outData();

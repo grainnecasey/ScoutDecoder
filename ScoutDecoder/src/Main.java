@@ -70,7 +70,7 @@ public class Main
 					{
 						Match curr = Data.get(i).getMatch(j);
 						writer.println("\tMatch: " + (j + 1));
-						writer.println("\t\tAuto High Goals: " + curr.getAutoHighGoals());
+						/*writer.println("\t\tAuto High Goals: " + curr.getAutoHighGoals());
 						writer.println("\t\tAuto Low Goals: " + curr.getAutoLowGoals());
 						if (curr.getAutoPort() != -1)
 							writer.println("\t\tAuto Port: " + curr.getAutoPort());
@@ -117,13 +117,13 @@ public class Main
 						writer.println("\t\tComment: " + curr.getComment());
 						writer.println("\t\tScouter: " + curr.getScouter());
 						double SP = ((curr.getHighGoals() + 0.4 * curr.getLowGoals()) / (curr.getHighGoals() + curr.getLowGoals() + curr.getMisses()));
-						writer.println("\t\tShot %: " + SP * 100 + "%");
+						writer.println("\t\tShot %: " + SP * 100 + "%");*/
 					}
 					for (int j = 0; j < Data.get(i).PitSize(); j++)
 					{
 						Pit curr = Data.get(i).getPit(j);
 						writer.println("\tPit: " + (j + 1));
-						writer.println("\t\tAuto High Goals: " + curr.getAutoHighGoals());
+						/*writer.println("\t\tAuto High Goals: " + curr.getAutoHighGoals());
 						writer.println("\t\tAuto Low Goals: " + curr.getAutoLowGoals());
 						writer.println("\t\tAuto Port: " + curr.getAutoPort());
 						writer.println("\t\tAuto CDF: " + curr.getAutoCDF());
@@ -150,7 +150,7 @@ public class Main
 						writer.println("\t\tScale: " + curr.getScaled());
 						writer.println("\t\tSurround: " + curr.getSurround());
 						writer.println("\t\tComment: " + curr.getComment());
-						writer.println("\t\tScouter: " + curr.getScouter());
+						writer.println("\t\tScouter: " + curr.getScouter());*/
 					}
 				}
 			}
