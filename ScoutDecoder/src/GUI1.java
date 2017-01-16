@@ -19,6 +19,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -29,6 +30,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
+
+import org.apache.commons.io.input.BOMInputStream;
 
 public class GUI1
 {
@@ -457,18 +460,18 @@ public class GUI1
 					Scanner inputFile = new Scanner(file);
 					while(inputFile.hasNext())
 					{
-						StringBuilder sb = new StringBuilder();
 						ArrayList<String> decoded = new ArrayList<String>();
 						String input;
 						int index;
-						sb.append(inputFile.next());
-						input = sb.toString();
-						//input = inputFile.next().toString();
-						System.out.println(input);
+						input = inputFile.next();
 						if(!input.split("}")[2].equals("true") || !input.split("}")[2].equals("false"))
 							input += inputFile.next();
-						//try
-						//{
+						if (input.startsWith("\uFEFF")) {
+					        input = input.substring(1);
+					    }
+						System.out.println(input);
+						try
+						{
 							Match nMatch = new Match();
 							Pit nPit = new Pit();
 							decoded = decode(input);
@@ -506,11 +509,11 @@ public class GUI1
 								}
 								txtOut.setText("Added Match Data");
 							}
-						//}
-						//catch (Exception error)
-						//{ 
-						//	txtOut.setText("Invalid Input");
-						//}
+						}
+						catch (Exception error)
+						{ 
+							txtOut.setText("Invalid Input");
+						}
 					txtInput.setText("");
 					outData();
 					}
