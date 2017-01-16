@@ -26,7 +26,7 @@ public class Match
 	{
 		autoGear = myData.get(1).equals("true");
 		autoGearPos = Integer.parseInt(myData.get(2));
-		autoBase = myData.get(3).equals(true);
+		autoBase = myData.get(3).equals("true");
 		autoLow = Integer.parseInt(myData.get(4));
 		autoHigh = Integer.parseInt(myData.get(5));
 		autoHopper = Integer.parseInt(myData.get(6));
@@ -35,13 +35,14 @@ public class Match
 		gear = Integer.parseInt(myData.get(9));
 		cycleT = Integer.parseInt(myData.get(10));
 		clearT = Integer.parseInt(myData.get(11));
-		climb = myData.get(12).equals("true");
-		survive = myData.get(13).equals("true");
-		quality = Integer.parseInt(myData.get(14));
-		strat = Integer.parseInt(myData.get(15));
-		driver = myData.get(16);
-		comment = myData.get(17);
-		scouter = myData.get(18);
+		scouter = myData.get(12);
+		climb = myData.get(13).equals("true");
+		survive = myData.get(14).equals("true");
+		quality = Integer.parseInt(myData.get(15));
+		strat = Integer.parseInt(myData.get(16));
+		driver = myData.get(17);
+		comment = myData.get(18);
+		
 	}
 	public boolean getAutoGear() { return autoGear; }
 	public int getAutoGearPos() { return autoGearPos; }

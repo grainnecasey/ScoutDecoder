@@ -12,6 +12,7 @@
  * --------------------------------------------------------------------------
  * Notes:
  * 1/14/2017 - Started commenting
+ * --------------------------------------------------------------------------
  */
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -34,7 +35,8 @@ public class GUI1
 	private static String rawData = "";
 	private static ArrayList<Team> Data = new ArrayList<Team>();
 	
-	// Grabs saved data
+	// Grabs saved data4
+	
 	private static void getData()
 	{
 			ArrayList<String> decoded = new ArrayList<String>();
@@ -51,7 +53,7 @@ public class GUI1
 				{
 					decoded = decode(d[i]);
 					index = Integer.parseInt(decoded.get(0));
-					if (decoded.get(1).equals("true") || decoded.get(1).equals("false")) // Tell apart if it is pit or match
+					if (decoded.get(2).equals("true") || decoded.get(2).equals("false")) // Tell apart if it is pit or match
 					{
 						nPit.setData(decoded);
 						if (Data.size() == 0 || Data.get(index) == null)
@@ -235,7 +237,7 @@ public class GUI1
 					Pit nPit = new Pit();
 					decoded = decode(input);
 					index = Integer.parseInt(decoded.get(0));
-					if (decoded.get(1).equals("true") || decoded.get(1).equals("false")) // Tell apart if it is pit or match
+					if (decoded.get(2).equals("true") || decoded.get(2).equals("false")) // Tell apart if it is pit or match
 					{
 						nPit.setData(decoded);
 						rawData += "]" + input;
@@ -271,7 +273,7 @@ public class GUI1
 				}
 				catch (Exception error)
 				{
-					//txtOut.setText("error");
+					txtOut.setText("error");
 				}
 			txtInput.setText("");
 			outData();
@@ -455,17 +457,23 @@ public class GUI1
 					Scanner inputFile = new Scanner(file);
 					while(inputFile.hasNext())
 					{
+						StringBuilder sb = new StringBuilder();
 						ArrayList<String> decoded = new ArrayList<String>();
 						String input;
 						int index;
-						input = inputFile.next();
-						try
-						{
+						sb.append(inputFile.next());
+						input = sb.toString();
+						//input = inputFile.next().toString();
+						System.out.println(input);
+						if(!input.split("}")[2].equals("true") || !input.split("}")[2].equals("false"))
+							input += inputFile.next();
+						//try
+						//{
 							Match nMatch = new Match();
 							Pit nPit = new Pit();
 							decoded = decode(input);
 							index = Integer.parseInt(decoded.get(0));
-							if (decoded.get(1).equals("true") || decoded.get(1).equals("false")) // Tell apart if it is pit or match
+							if (decoded.get(2).equals("true") || decoded.get(2).equals("false")) // Tell apart if it is pit or match
 							{
 								nPit.setData(decoded);
 								rawData += "]" + input;
@@ -498,11 +506,11 @@ public class GUI1
 								}
 								txtOut.setText("Added Match Data");
 							}
-						}
-						catch (Exception error)
-						{ 
-							txtOut.setText("Invalid Input");
-						}
+						//}
+						//catch (Exception error)
+						//{ 
+						//	txtOut.setText("Invalid Input");
+						//}
 					txtInput.setText("");
 					outData();
 					}
