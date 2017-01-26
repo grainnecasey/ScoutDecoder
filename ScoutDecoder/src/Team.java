@@ -149,6 +149,7 @@ public class Team
 		return temp;
 	}
 	
+	
 	public int didDie() {//checks to see how many times a robot died
 		int temp = 0;
 		for(int i  = 0; i < mData.size(); i++) {

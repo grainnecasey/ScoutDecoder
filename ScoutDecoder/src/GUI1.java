@@ -112,6 +112,7 @@ private ArrayList<Team> sorted = new ArrayList<Team>();
 						}
 					}
 				} 
+				
 			}
 			break;
 		case "Auto Spec Start": //referring to Pit specStart 

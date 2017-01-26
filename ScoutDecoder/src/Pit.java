@@ -71,6 +71,7 @@ public class Pit
 	public String getScouter() { return scouter; }
 	public String getIntake() { return intake; } 
 	
+	
 	/*boolean autoHighGoals;
 	boolean autoLowGoals;
 	boolean autoPort;
