@@ -53,6 +53,355 @@ public class GUI1
 	private static JTextArea txtOut;
 	private JButton btnFind;
 	
+private ArrayList<Team> sorted = new ArrayList<Team>();
+	
+	public void sortByPit(String dataType) { //sortBy for any items in pit scouting, WIP
+		for(int i = 0; i < Data.size(); i++) {
+			sorted.add(Data.get(i)); //sets ArrayList sorted to be equal to Data
+		}
+	
+		switch (dataType) {	
+		case "Auto Gear": // referring to Pit autoGear
+			for(int i = 0;i < sorted.size();i++) {
+				if(sorted.get(i).getPit(0).getAutoGear() == false) {
+					for(int j = i + 1;j < sorted.size();j++) {
+						if(sorted.get(j).getPit(0).getAutoGear()) {
+							Team temp = sorted.get(i); //moves 'true's to the front
+							sorted.set(i, sorted.get(j));
+							sorted.set(j, temp);
+							break;
+						}
+					}
+				}
+			}
+			break;
+		case "Auto High": //referring to Pit autoHigh 
+			for(int i = 0;i < sorted.size();i++) {
+				if(sorted.get(i).getPit(0).getAutoHigh() == false) {
+					for(int j = i + 1;j < sorted.size();j++) {
+						if(sorted.get(j).getPit(0).getAutoHigh()) {
+							Team temp = sorted.get(i); //moves 'true's to the front
+							sorted.set(i, sorted.get(j));
+							sorted.set(j, temp);
+						}
+					}
+				}
+			}
+			break;
+		case "Auto Low": //referring to Pit autoLow 
+			for(int i = 0;i < sorted.size();i++) {
+				if(sorted.get(i).getPit(0).getAutoLow() == false) {
+					for(int j = i + 1;j < sorted.size();j++) {
+						if(sorted.get(j).getPit(0).getAutoLow()) {
+							Team temp = sorted.get(i);//moves 'true's to the front
+							sorted.set(i, sorted.get(j));
+							sorted.set(j, temp);
+						}
+					}
+				}
+			}
+			break;
+		case "Auto Hopper": //referring to Pit autoHopper 
+			for(int i = 0;i < sorted.size();i++) {
+				if(sorted.get(i).getPit(0).getAutoHopper() == false) {
+					for(int j = i + 1;j < sorted.size();j++) {
+						if(sorted.get(j).getPit(0).getAutoHopper()) {
+							Team temp = sorted.get(i);//moves 'true's to the front
+							sorted.set(i, sorted.get(j));
+							sorted.set(j, temp);
+						}
+					}
+				}
+			}
+			break;
+		case "Auto Spec Start": //referring to Pit specStart 
+			for(int i = 0;i < sorted.size();i++) {
+				if(sorted.get(i).getPit(0).getSpecStart() == false) {
+					for(int j = i + 1;j < sorted.size();j++) {
+						if(sorted.get(j).getPit(0).getSpecStart()) {
+							Team temp = sorted.get(i);//moves 'true's to the front
+							sorted.set(i, sorted.get(j));
+							sorted.set(j, temp);
+						}
+					}
+				}
+			}
+			break;
+		case "Gear": //referring to Pit gear 
+			for(int i = 0;i < sorted.size();i++) {
+				if(sorted.get(i).getPit(0).getGear() == false) {
+					for(int j = i + 1;j < sorted.size();j++) {
+						if(sorted.get(j).getPit(0).getGear()) {
+							Team temp = sorted.get(i);//moves 'true's to the front
+							sorted.set(i, sorted.get(j));
+							sorted.set(j, temp);
+						}
+					}
+				}
+			}
+			break;
+		case "High": //referring to Pit High 
+			for(int i = 0;i < sorted.size();i++) {
+				if(sorted.get(i).getPit(0).getHigh() == false) {
+					for(int j = i + 1;j < sorted.size();j++) {
+						if(sorted.get(j).getPit(0).getHigh()) {
+							Team temp = sorted.get(i);//moves 'true's to the front
+							sorted.set(i, sorted.get(j));
+							sorted.set(j, temp);
+						}
+					}
+				}
+			}
+			break;
+		case "Low": //referring to Pit Low 
+			for(int i = 0;i < sorted.size();i++) {
+				if(sorted.get(i).getPit(0).getLow() == false) {
+					for(int j = i + 1;j < sorted.size();j++) {
+						if(sorted.get(j).getPit(0).getLow()) {
+							Team temp = sorted.get(i);//moves 'true's to the front
+							sorted.set(i, sorted.get(j));
+							sorted.set(j, temp);
+						}
+					}
+				}
+			}
+			break;
+		case "Climb": //referring to Pit climb 
+			for(int i = 0;i < sorted.size();i++) {
+				if(sorted.get(i).getPit(0).getClimb() == false) {
+					for(int j = i + 1;j < sorted.size();j++) {
+						if(sorted.get(j).getPit(0).getClimb()) {
+							Team temp = sorted.get(i);//moves 'true's to the front
+							sorted.set(i, sorted.get(j));
+							sorted.set(j, temp);
+						}
+					}
+				}
+			}
+			break;
+		case "Robo Speed": //referring to Pit roboSpeed
+			for(int i = 0;i < sorted.size();i++) {
+				for(int j = i + 1;j < sorted.size();j++) {
+					if(sorted.get(i).getPit(0).getRoboSpeed() < sorted.get(j).getPit(0).getRoboSpeed()) {
+						Team temp = sorted.get(i); //moves higher #s to the front
+						sorted.set(i, sorted.get(j));
+						sorted.set(j, temp);
+					}
+				}
+			}
+			break;
+		case "Shoot Speed": //referring to Pit shootSpeed
+			for(int i = 0;i < sorted.size();i++) {
+				for(int j = i + 1;j < sorted.size();j++) {
+					if(sorted.get(i).getPit(0).getShootSpeed() < sorted.get(j).getPit(0).getShootSpeed()) {
+						Team temp = sorted.get(i);//moves higher #s to the front
+						sorted.set(i, sorted.get(j));
+						sorted.set(j, temp);
+					}
+				}
+			}
+			break;
+		case "Climb Speed": //referring to Pit climbSpeed
+			for(int i = 0;i < sorted.size();i++) {
+				for(int j = i + 1;j < sorted.size();j++) {
+					if(sorted.get(i).getPit(0).getClimbSpeed() < sorted.get(j).getPit(0).getClimbSpeed()) {
+						Team temp = sorted.get(i);//moves higher #s to the front
+						sorted.set(i, sorted.get(j));
+						sorted.set(j, temp);
+					}
+				}
+			}
+			break;
+		case "Intake":
+			for(int i = 0; i < sorted.size();i++) {
+				if(sorted.get(i).getPit(0).getIntake().equals("floor")) {
+					for (int j = i + 1;j < sorted.size();j++) {
+						if(sorted.get(j).getPit(0).getIntake().equals("top")) {
+							Team temp = sorted.get(i);//moves 'top's to the front
+							sorted.set(i, sorted.get(j));
+							sorted.set(j, temp);
+							break;
+						}
+					}
+				}
+			}
+			break;
+		default:
+			txtOut.setText("Invalid target");
+		}
+		
+	}
+	
+	public void sortByMatch(String dataType) { //sortBy for any items in match scouting WIP
+		switch (dataType) {
+		case "Auto Gear": //referring to match autoGear
+			for(int i = 0; i < sorted.size();i++) {
+				if(!sorted.get(i).useAutoGear()) {
+					for(int j = i + 1;j < sorted.size(); j++) {
+						if (sorted.get(j).useAutoGear()) {
+							Team temp = sorted.get(i); // moves all true values to the front
+							sorted.set(i, sorted.get(j));
+							sorted.set(j, temp);
+						}
+					}
+				}
+			}
+			break;
+		case "Auto Gear Position": //referring to match autoGearPos
+			for(int i = 0; i < sorted.size(); i++) {
+				for(int j = i + 1; j < sorted.size(); j++) {
+					if(sorted.get(j).frqAutoGearPos() > sorted.get(j).frqAutoGearPos()) {
+						Team temp = sorted.get(i); //moves the highest number to the front
+						sorted.set(i, sorted.get(j));
+						sorted.set(j, temp);
+					}
+				}
+			}
+			break;
+		case "Auto Baseline": //referring to match autoBase
+			for(int i = 0; i < sorted.size();i++) {
+				if(!sorted.get(i).useAutoBase()) {
+					for(int j = i + 1;j < sorted.size(); j++) {
+						if (sorted.get(j).useAutoBase()) {
+							Team temp = sorted.get(i); // moves all true values to the front
+							sorted.set(i, sorted.get(j));
+							sorted.set(j, temp);
+						}
+					}
+				}
+			}
+			break;
+			
+		case "Auto Low": //referring to match autoLow
+			for(int i = 0; i < sorted.size(); i++) {
+				for(int j = i + 1; j < sorted.size(); j++) {
+					if(sorted.get(j).avgAutoLow() > sorted.get(j).avgAutoLow()) {
+						Team temp = sorted.get(i); //moves the highest number to the front
+						sorted.set(i, sorted.get(j));
+						sorted.set(j, temp);
+					}
+				}
+			}
+			break;
+		
+		
+		case "Auto High": //referring to match autoHgih
+			for(int i = 0; i < sorted.size(); i++) {
+				for(int j = i + 1; j < sorted.size(); j++) {
+					if(sorted.get(j).avgAutoHigh() > sorted.get(j).avgAutoHigh()) {
+						Team temp = sorted.get(i); //moves the highest number to the front
+						sorted.set(i, sorted.get(j));
+						sorted.set(j, temp);
+					}
+				}
+			}
+			break;
+			
+		case "Low Goal": //referring to match low
+			for(int i = 0; i < sorted.size(); i++) {
+				for(int j = i + 1; j < sorted.size(); j++) {
+					if(sorted.get(j).avgLowGoal() > sorted.get(j).avgLowGoal()) {
+						Team temp = sorted.get(i); //moves the highest number to the front
+						sorted.set(i, sorted.get(j));
+						sorted.set(j, temp);
+					}
+				}
+			}
+			break;
+			
+		case "High Goal": //referring to match high
+			for(int i = 0; i < sorted.size(); i++) {
+				for(int j = i + 1; j < sorted.size(); j++) {
+					if(sorted.get(j).avgHighGoal() > sorted.get(j).avgHighGoal()) {
+						Team temp = sorted.get(i); //moves the highest number to the front
+						sorted.set(i, sorted.get(j));
+						sorted.set(j, temp);
+					}
+				}
+			}
+			break;
+		
+		case "Gear": //referring to match gear
+			for(int i = 0; i < sorted.size(); i++) {
+				for(int j = i + 1; j < sorted.size(); j++) {
+					if(sorted.get(j).avgGear() > sorted.get(j).avgGear()) {
+						Team temp = sorted.get(i); //moves the highest number to the front
+						sorted.set(i, sorted.get(j));
+						sorted.set(j, temp);
+					}
+				}
+			}
+			break;
+		
+		case "Cycle Time": //referring to match cycle time
+			for(int i = 0; i < sorted.size(); i++) {
+				for(int j = i + 1; j < sorted.size(); j++) {
+					if(sorted.get(j).avgCycleT() > sorted.get(j).avgCycleT()) {
+						Team temp = sorted.get(i); //moves the highest number to the front
+						sorted.set(i, sorted.get(j));
+						sorted.set(j, temp);
+					}
+				}
+			}
+			break;
+			
+		case "Clear Time": //referring to match clear time
+			for(int i = 0; i < sorted.size(); i++) {
+				for(int j = i + 1; j < sorted.size(); j++) {
+					if(sorted.get(j).avgClearT() > sorted.get(j).avgClearT()) {
+						Team temp = sorted.get(i); //moves the highest number to the front
+						sorted.set(i, sorted.get(j));
+						sorted.set(j, temp);
+					}
+				}
+			}
+			break;
+			
+		case "Quality": //referring to match quality
+			for(int i = 0; i < sorted.size(); i++) {
+				for(int j = i + 1; j < sorted.size(); j++) {
+					if(sorted.get(j).avgQuality() > sorted.get(j).avgQuality()) {
+						Team temp = sorted.get(i); //moves the highest number to the front
+						sorted.set(i, sorted.get(j));
+						sorted.set(j, temp);
+					}
+				}
+			}
+			break;
+			
+		case "Climb": //referring to match climb
+			for(int i = 0; i < sorted.size();i++) {
+				if(!sorted.get(i).useClimb()) {
+					for(int j = i + 1;j < sorted.size(); j++) {
+						if (sorted.get(j).useClimb()) {
+							Team temp = sorted.get(i); // moves all true values to the front
+							sorted.set(i, sorted.get(j));
+							sorted.set(j, temp);
+						}
+					}
+				}
+			}
+			break;
+			
+		case "Die": //referring to match survive
+			for(int i = 0; i < sorted.size(); i++) {
+				for(int j = i + 1; j < sorted.size(); j++) {
+					if(sorted.get(j).didDie() > sorted.get(j).didDie()) {
+						Team temp = sorted.get(i); //moves the highest number to the front
+						sorted.set(i, sorted.get(j));
+						sorted.set(j, temp);
+					}
+				}
+			}
+			break;
+		}
+	}
+	
+	
+	
+	
+	
+	
 	// Grabs saved data from database file
 	
 	private static void getData()
