@@ -111,7 +111,7 @@ private ArrayList<Team> sorted = new ArrayList<Team>();
 							sorted.set(j, temp);
 						}
 					}
-				}
+				} 
 			}
 			break;
 		case "Auto Spec Start": //referring to Pit specStart 

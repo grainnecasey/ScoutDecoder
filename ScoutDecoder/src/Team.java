@@ -136,7 +136,7 @@ public class Team
 		}
 		temp /= mData.size();
 		return temp;
-	}
+	} 
 	
 	public boolean useClimb() {//checks to see if the team can climb during auto
 		boolean temp = false;

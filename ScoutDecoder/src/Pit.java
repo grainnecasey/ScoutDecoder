@@ -69,11 +69,12 @@ public class Pit
 	public String getFieldUsage() { return fieldUsage; }
 	public String getComment() { return comment; }
 	public String getScouter() { return scouter; }
-	public String getIntake() { return intake; }
+	public String getIntake() { return intake; } 
+	
 	/*boolean autoHighGoals;
 	boolean autoLowGoals;
 	boolean autoPort;
-	boolean autoCDF;
+	boolean autoCDF; 
 	boolean autoRamp;
 	boolean autoMoat;
 	boolean autoDraw;
