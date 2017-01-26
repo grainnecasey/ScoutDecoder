@@ -52,6 +52,9 @@ public class GUI1
 	private JTextField txtData;
 	private static JTextArea txtOut;
 	private JButton btnFind;
+	private JButton btnSort;
+	private JTextField txtSortFrom;//either Pit or Match
+	private JTextField txtSortBy; //the condition to sort by
 	
 private ArrayList<Team> sorted = new ArrayList<Team>();
 	
@@ -399,10 +402,6 @@ private ArrayList<Team> sorted = new ArrayList<Team>();
 	}
 	
 	
-	
-	
-	
-	
 	// Grabs saved data from database file
 	
 	private static void getData()
@@ -661,6 +660,33 @@ private ArrayList<Team> sorted = new ArrayList<Team>();
 		}});
 		btnExit.setBounds(12,777,97,25);
 		frmMain.getContentPane().add(btnExit);
+		
+		//Sorting Stuff
+		
+		JButton btnSort = new JButton("Sort");
+		btnSort.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				if (txtSortFrom.getText().equals("Pit")) {
+					sortByPit(txtSortBy.getText());
+				} else if (txtSortFrom.getText().equals("Match")) {
+					sortByMatch(txtSortBy.getText());
+				} else {
+					txtOut.setText("ERROR: Please re check your \"Sort By\" parameters. Make sure the first letter of every word is capitalized.");
+				}
+			}});
+		btnSort.setBounds(12,700,97,25);
+		frmMain.getContentPane().add(btnSort);
+		
+		txtSortFrom = new JTextField();
+		txtSortFrom.setToolTipText("Sort From Pit/Match");
+		txtSortFrom.setBounds(115,700,97,25);
+		frmMain.getContentPane().add(txtSortFrom);
+		
+		txtSortBy = new JTextField();
+		txtSortBy.setToolTipText("Sort By");
+		txtSortBy.setBounds(221,700,97,25);
+		frmMain.getContentPane().add(txtSortBy);
 		
 		// Unimportant GUI stuff
 		txtInput = new JTextField();
