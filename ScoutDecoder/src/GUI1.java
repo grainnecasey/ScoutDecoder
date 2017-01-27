@@ -56,7 +56,7 @@ public class GUI1
 	private JTextField txtSortFrom;//either Pit or Match
 	private JTextField txtSortBy; //the condition to sort by
 	
-private ArrayList<Team> sorted = new ArrayList<Team>();
+	private ArrayList<Team> sorted = new ArrayList<Team>();
 	
 	public void sortByPit(String dataType) { //sortBy for any items in pit scouting, WIP
 		for(int i = 0; i < Data.size(); i++) {
@@ -301,7 +301,7 @@ private ArrayList<Team> sorted = new ArrayList<Team>();
 			}
 			break;
 			
-		case "Low Goal": //referring to match low
+		/*case "Low Goal": //referring to match low
 			for(int i = 0; i < sorted.size(); i++) {
 				for(int j = i + 1; j < sorted.size(); j++) {
 					if(sorted.get(j).avgLowGoal() > sorted.get(j).avgLowGoal()) {
@@ -311,9 +311,9 @@ private ArrayList<Team> sorted = new ArrayList<Team>();
 					}
 				}
 			}
-			break;
+			break;*/
 			
-		case "High Goal": //referring to match high
+		/*case "High Goal": //referring to match high
 			for(int i = 0; i < sorted.size(); i++) {
 				for(int j = i + 1; j < sorted.size(); j++) {
 					if(sorted.get(j).avgHighGoal() > sorted.get(j).avgHighGoal()) {
@@ -323,7 +323,7 @@ private ArrayList<Team> sorted = new ArrayList<Team>();
 					}
 				}
 			}
-			break;
+			break;*/
 		
 		case "Gear": //referring to match gear
 			for(int i = 0; i < sorted.size(); i++) {
@@ -361,7 +361,7 @@ private ArrayList<Team> sorted = new ArrayList<Team>();
 			}
 			break;
 			
-		case "Quality": //referring to match quality
+		/*case "Quality": //referring to match quality
 			for(int i = 0; i < sorted.size(); i++) {
 				for(int j = i + 1; j < sorted.size(); j++) {
 					if(sorted.get(j).avgQuality() > sorted.get(j).avgQuality()) {
@@ -371,7 +371,7 @@ private ArrayList<Team> sorted = new ArrayList<Team>();
 					}
 				}
 			}
-			break;
+			break;*/
 			
 		case "Climb": //referring to match climb
 			for(int i = 0; i < sorted.size();i++) {
@@ -663,7 +663,7 @@ private ArrayList<Team> sorted = new ArrayList<Team>();
 		
 		//Sorting Stuff
 		
-		JButton btnSort = new JButton("Sort");
+		/*JButton btnSort = new JButton("Sort");
 		btnSort.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
@@ -676,7 +676,7 @@ private ArrayList<Team> sorted = new ArrayList<Team>();
 				}
 			}});
 		btnSort.setBounds(12,700,97,25);
-		frmMain.getContentPane().add(btnSort);
+		frmMain.getContentPane().add(btnSort);*/
 		
 		txtSortFrom = new JTextField();
 		txtSortFrom.setToolTipText("Sort From Pit/Match");
@@ -722,6 +722,7 @@ private ArrayList<Team> sorted = new ArrayList<Team>();
 		btnFind = new JButton("Find");
 		btnFind.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
+			txtOut.setText("");
 			try {
 				if (btnPit.isSelected()) // If pit radio button is selected, user is looking for pit data instead of match
 				{
@@ -729,7 +730,7 @@ private ArrayList<Team> sorted = new ArrayList<Team>();
 					int pitI = Integer.parseInt(txtMatch.getText());
 					Team team = Data.get(teamI);
 					Pit curr = team.getPit(pitI - 1); // Grabs the requested team and pit
-					txtOut.setText(txtOut.getText() + "\nAuto Gear: " + curr.getAutoGear());
+					txtOut.setText("Auto Gear: " + curr.getAutoGear());
 					txtOut.setText(txtOut.getText() + "\nAuto High Goal: " + curr.getAutoHigh());
 					txtOut.setText(txtOut.getText() + "\nAuto Low Goal: " + curr.getAutoLow());
 					txtOut.setText(txtOut.getText() + "\nAuto Hopper: " + curr.getAutoHopper());
@@ -759,7 +760,7 @@ private ArrayList<Team> sorted = new ArrayList<Team>();
 					{
 						case "":
 						case "all":
-							txtOut.setText(txtOut.getText() + "\nAuto Gear: " + curr.getAutoGear());
+							txtOut.setText("Auto Gear: " + curr.getAutoGear());
 							txtOut.setText(txtOut.getText() + "\nAuto Gear Position" + curr.getAutoGearPos());
 							txtOut.setText(txtOut.getText() + "\nAuto Base: " + curr.getAutoBase());
 							txtOut.setText(txtOut.getText() + "\nAuto Low Goal: " + curr.getAutoLow());
@@ -852,16 +853,16 @@ private ArrayList<Team> sorted = new ArrayList<Team>();
 						ArrayList<String> decoded = new ArrayList<String>();
 						String input;
 						int index;
-						input = inputFile.next(); // Grabs string from file
+						input = inputFile.nextLine(); // Grabs string from file
 						if(!input.split("}")[2].equals("true") || !input.split("}")[2].equals("false")) // Accounts for the new line bug error in scouting app 
 							if (workaround)
 							{
-								inputFile.next();
+								inputFile.nextLine();
 								workaround = false;
 							}
-							input += inputFile.next();
+							input += inputFile.nextLine();
 							if (inputFile.hasNext())
-								inputFile.next();
+								inputFile.nextLine();
 						if (input.startsWith("\uFEFF")) { // Workaround for UTF-8 BOM encoding 
 					        input = input.substring(1);
 					    }

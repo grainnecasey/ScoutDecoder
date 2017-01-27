@@ -8,15 +8,15 @@ public class Match
 	int autoLow;
 	int autoHigh;
 	int autoHopper;
-	int low;
-	int high;
+	boolean low;
+	boolean high;
 	int gear;
 	int cycleT;
 	int clearT;
 	boolean climb;
 	boolean survive;
-	int quality;
-	int strat;
+	String quality;
+	String strat;
 	String driver;
 	String comment;
 	String scouter;
@@ -30,18 +30,18 @@ public class Match
 		autoLow = Integer.parseInt(myData.get(4));
 		autoHigh = Integer.parseInt(myData.get(5));
 		autoHopper = Integer.parseInt(myData.get(6));
-		low = Integer.parseInt(myData.get(7));
-		high = Integer.parseInt(myData.get(8));
+		low = myData.get(6).equals("true");
+		high = myData.get(7).equals("true");
 		gear = Integer.parseInt(myData.get(9));
 		cycleT = Integer.parseInt(myData.get(10));
 		clearT = Integer.parseInt(myData.get(11));
-		scouter = myData.get(12);
-		climb = myData.get(13).equals("true");
-		survive = myData.get(14).equals("true");
-		quality = Integer.parseInt(myData.get(15));
-		strat = Integer.parseInt(myData.get(16));
-		driver = myData.get(17);
-		comment = myData.get(18);
+		climb = myData.get(12).equals("true");
+		survive = myData.get(13).equals("true ");
+		quality = myData.get(14);
+		strat = myData.get(15);
+		driver = myData.get(16);
+		comment = myData.get(17);
+		scouter = myData.get(18);
 		
 	}
 	public boolean getAutoGear() { return autoGear; }
@@ -50,15 +50,15 @@ public class Match
 	public int getAutoLow() { return autoLow; }
 	public int getAutoHigh() { return autoHigh; }
 	public int getAutoHopper() { return autoHopper; }
-	public int getLow() { return low; }
-	public int getHigh() { return high; }
+	public boolean getLow() { return low; }
+	public boolean getHigh() { return high; }
 	public int getGear() { return gear; }
 	public int getCycleTime() { return cycleT; }
 	public int getClearTime() { return clearT; }
 	public boolean getClimb() { return climb; }
 	public boolean getSurvived() { return survive; }
-	public int getQuality() { return quality; }
-	public int getStrategy() { return strat; }
+	public String getQuality() { return quality; }
+	public String getStrategy() { return strat; }
 	public String getDriver() { return driver; }
 	public String getComment() { return comment; }
 	public String getScouter() { return scouter; }

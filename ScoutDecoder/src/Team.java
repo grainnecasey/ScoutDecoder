@@ -84,23 +84,23 @@ public class Team
 		return temp;
 	}
 	
-	public int avgLowGoal() {//checks to see low goal on average
+	/*public int avgLowGoal() {//checks to see low goal on average
 		int temp = 0;
 		for(int i = 0; i < mData.size();i++) {
 			temp += mData.get(i).getLow();
 		}
 		temp /= mData.size();
 		return temp;
-	}
+	}*/
 	
-	public int avgHighGoal() {//checks to see high goal on average
+	/*public int avgHighGoal() {//checks to see high goal on average
 		int temp = 0;
 		for(int i = 0; i < mData.size();i++) {
 			temp += mData.get(i).getHigh();
 		}
 		temp /= mData.size();
 		return temp;
-	}
+	}*/
 	
 	public int avgGear() {//checks to see how many gears a team deposits on average
 		int temp = 0;
@@ -129,14 +129,14 @@ public class Team
 		return temp;
 	}
 	
-	public int avgQuality() { //checks to see what the quality is on average
+	/*public int avgQuality() { //checks to see what the quality is on average
 		int temp = 0;
 		for(int i = 0; i < mData.size();i++) {
 			temp += mData.get(i).getQuality();
 		}
 		temp /= mData.size();
 		return temp;
-	} 
+	} */
 	
 	public boolean useClimb() {//checks to see if the team can climb during auto
 		boolean temp = false;
